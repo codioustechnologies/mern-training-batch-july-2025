@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login / Sign-up</title>
+  <style>
+    
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 300px;
+      margin: 60px auto;
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    button {
+      width: 40%;
+      padding: 12px;
+      background-color: #2baf4ae4;
+      border: none;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-toggle {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .form-toggle a {
+      color: #007BFF;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .toggle-buttons {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .toggle-buttons button {
+      width: 48%;
+      margin: 1%;
+      background-color: #007bff;
+    }
+
+    .show-pass {
+      font-size: 12px;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="toggle-buttons">
+      <button onclick="showLogin()">Login</button>
+      <button onclick="showSignup()">Sign Up</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+      <h2>Login</h2>
+      <div class="form-group">
+        <input type="text" id="loginUsername" placeholder="Username" required />
+      </div>
+      <div class="form-group">
+        <input type="password" id="loginPassword" placeholder="Password" required />
+        <div class="show-pass">
+          <input type="checkbox" onclick="togglePassword('loginPassword')"> Show Password
+        </div>
+      </div>
+      <div class="form-group" style="text-align: center;">
+        <button type="submit">Login</button>
+      </div>
+      <div class="form-toggle">
+        Don't have an account? <a onclick="showSignup()">Sign up</a>
+      </div>
+    </form>
+
+    <!-- Sign Up Form -->
+    <form id="signupForm" class="hidden">
+      <h2>Sign Up</h2>
+      <div class="form-group">
+        <input type="text" id="signupUsername" placeholder="Username" required />
+      </div>
+      <div class="form-group">
+        <input type="email" id="signupEmail" placeholder="Email" required />
+      </div>
+      <div class="form-group">
+        <input type="password" id="signupPassword" placeholder="Password" required />
+        <div class="show-pass">
+          <input type="checkbox" onclick="togglePassword('signupPassword')"> Show Password
+        </div>
+      </div>
+      <div class="form-group" style="text-align: center">
+        <button type="submit">Sign Up</button>
+      </div>
+      <div class="form-toggle">
+        Already have an account? <a onclick="showLogin()">Login</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function showSignup() {
+      document.getElementById("loginForm").classList.add("hidden");
+      document.getElementById("signupForm").classList.remove("hidden");
+    }
+
+    function showLogin() {
+      document.getElementById("signupForm").classList.add("hidden");
+      document.getElementById("loginForm").classList.remove("hidden");
+    }
+
+    function togglePassword(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+    }
+
+    // Signup handler
+    document.getElementById("signupForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("signupUsername").value;
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+
+      // Save to localStorage
+      const userData = { username, email, password };
+      localStorage.setItem("user", JSON.stringify(userData));
+      alert("Account created! You can now login.");
+      showLogin();
+    });
+
+    // Login handler
+    document.getElementById("loginForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const username = document.getElementById("loginUsername").value;
+      const password = document.getElementById("loginPassword").value;
+
+      const storedData = JSON.parse(localStorage.getItem("user"));
+
+      if (storedData && storedData.username === username && storedData.password === password) {
+        alert("Login successful!");
+        // You can redirect or handle login success here
+      } else {
+        alert("Invalid credentials.");
+      }
+    });
+  </script>
+</body>
+</html>
