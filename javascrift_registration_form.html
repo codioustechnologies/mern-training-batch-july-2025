@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Signup Form</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+ 
+    body {
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      
+    }
+ 
+    .container {
+      background: #fff;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      width: 350px;
+    }
+ 
+    .form-toggle {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+ 
+    .form-toggle button {
+      width: 48%;
+      padding: 10px;
+      cursor: pointer;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+ 
+    .form {
+      display: flex;
+      flex-direction: column;
+    }
+ 
+    .form.hidden {
+      display: none;
+    }
+ 
+    input {
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+ 
+    button[type="submit"] {
+      background-color: #28a745;
+      color: white;
+      padding: 10px;
+      margin-top: 10px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+ 
+    button[type="submit"]:hover {
+      background-color: #218838;
+    }
+ 
+    .message {
+      margin-top: 10px;
+      font-size: 0.9em;
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    
+    <div class="form-toggle">
+      <button id="login-button">Login</button>
+      <button id="signup-button">Signup</button>
+    </div>
+     
+  
+    <form id="login-form" class="form">
+      <h2>Login</h2>
+      <input type="text" id="login-username" placeholder="Username" required >
+      <input type="password" id="login-password" placeholder="Password" required >
+      <div><input type="checkbox" onclick="show()" style="margin: 5px;"> Show Password</div>
+      <button type="submit">Login</button>
+      <p id="login-message" class="message"></p>
+    </form>
+ 
+   
+    <form id="signup-form" class="form hidden">
+      <h2>Signup</h2>
+      <input type="text" id="signup-username" placeholder="Username" required >
+      <input type="email" id="signup-email" placeholder="Email" required >
+      <input type="password" id="signup-password" placeholder="Password" required>
+      <div><input type="checkbox" onclick="show()" style="margin: 5px;"> Show Password</div>
+      <input type="password" id="signup-confirm" placeholder="Confirm Password" required />
+      <button type="submit">Signup</button>
+      <p id="signup-message" class="message"></p>
+    </form>
+  </div>
+ 
+  <script>
+    // buttons
+    const loginbutton = document.getElementById("login-button");
+    const signupbutton = document.getElementById("signup-button");
+   
+    // login page or signup page
+    const loginForm = document.getElementById("login-form");
+    const signupForm = document.getElementById("signup-form");
+ 
+
+    loginbutton.addEventListener("click", () => {
+      alert("Go to login page")
+      loginForm.classList.remove("hidden");
+      signupForm.classList.add("hidden");
+    });
+ 
+
+    signupbutton.addEventListener("click", () => {
+      alert("Go to signup page")
+      signupForm.classList.remove("hidden");
+      loginForm.classList.add("hidden");
+    });
+
+    function show(){
+      var showpassword = document.getElementById("login-password");
+
+      if(showpassword.type === "password"){
+        showpassword.type="text";
+      }
+      else{
+        showpassword.type="password";
+      };
+
+    }
+ 
+    // when user click on sign up button signup form is submitted
+    document.getElementById("signup-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+     
+      const username = document.getElementById("signup-username").value.trim();
+      const email = document.getElementById("signup-email").value.trim();
+      const password = document.getElementById("signup-password").value;
+      const confirm = document.getElementById("signup-confirm").value;
+      const message = document.getElementById("signup-message");
+ 
+      if (!username || !email || !password || !confirm) {
+ 
+        message.textContent = "Please fill all fields.";
+        return;
+      }
+     
+      if (password !== confirm) {
+ 
+        message.textContent = "Passwords do not match! Cheak Your Password.";
+        return;
+      }
+     
+
+      const user = { username, email, password };
+ 
+      localStorage.setItem("user", JSON.stringify(user));
+ 
+      message.style.color = "green";
+      message.textContent = "Signup successful! You can now log in.";
+ 
+      document.getElementById("signup-form").reset();
+    });
+ 
+    // when user click on login button login form is submitted
+    document.getElementById("login-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+ 
+      const username = document.getElementById("login-username").value.trim();
+      const password = document.getElementById("login-password").value;
+      const message = document.getElementById("login-message");
+ 
+     
+      const storedUser = JSON.parse(localStorage.getItem("user"));
+ 
+
+      if (!storedUser || storedUser.username !== username || storedUser.password !== password) {
+ 
+        message.textContent = "Invalid credentials! Cheak username & Password";
+        return;
+      }
+ 
+      message.style.color = "red";
+      message.textContent = ` Welcome, ${storedUser.username}!`;
+    });
+  </script>
+</body>
+</html>
+ 
