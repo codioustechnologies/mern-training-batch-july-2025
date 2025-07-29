@@ -194,6 +194,9 @@ nav button.navbar-toggler {
     height:230px;
     
 }
+.margin{
+    margin-bottom: 120px;
+}
 
 
 .section-title h5::before {
