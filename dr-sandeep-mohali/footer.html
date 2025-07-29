@@ -1,0 +1,97 @@
+<div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: -75px;">
+        <div class="container pt-5">
+            <div class="row g-5 pt-4">
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="text-white mb-4">Quick Links</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                        <a class="text-light mb-2" href="index.html"><i class="bi bi-arrow-right text-primary me-2"></i>Home</a>
+                        <a class="text-light mb-2" href="about.html"><i class="bi bi-arrow-right text-primary me-2"></i>About</a>
+                        <a class="text-light mb-2" href="services.html"><i class="bi bi-arrow-right text-primary me-2"></i>Services</a>
+                        <a class="text-light" href="contact.php"><i class="bi bi-arrow-right text-primary me-2"></i>Contact</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <h3 class="text-white mb-4">Locations</h3>
+                    <p class="mb-2">
+                           <p class="mb-2">
+                  <i class="bi bi-geo-alt text-primary me-2"></i>
+                  <strong>Sector 91 Clinic:</strong><br>
+                  Kothi no 1118, JLPL, Sector 91, Mohali.<br>
+                  <i class="bi bi-clock text-primary me-2"></i>
+                  <strong>Timings:</strong> 4:00 PM – 8:00 PM (Mon to Sat), Sunday Closed <br/>
+                          <a href="https://maps.app.goo.gl/YKjuhk52J7mRXi2k7" target="_blank" style="color: #0dcaf0;">
+            📍 Click here to view location on Google Maps
+        </a>
+                </p>
+                
+                <p class="mb-2">
+                  <i class="bi bi-geo-alt text-primary me-2"></i>
+                  <strong>Landran Clinic:</strong><br>
+                  Infront of Govt. High School, Landran.<br>
+                  <i class="bi bi-clock text-primary me-2"></i>
+                  <strong>Timings:</strong> 8:30 AM – 1:00 PM (Mon to Sat), Sunday Closed <br />
+                          <a href="https://maps.app.goo.gl/9XdQ3A6bgFKr4GEJ8" target="_blank" style="color: #0dcaf0;">
+            📍 Click here to view location on Google Maps
+        </a>
+                </p>
+
+                </div>
+                 <div class="col-lg-4 col-md-6">
+                    <h3 class="text-white mb-4">Get In Touch</h3>
+                    <div class="d-flex flex-column justify-content-start">
+                   <div class="mb-2"> <a href="mailto:deep1722@gmail.com" style="color: aliceblue;"><p class="mb-2"><i class="bi bi-envelope-open text-primary me-2"></i>deep1722@gmail.com</p></a></div>
+                    <p class="mb-0"><i class="bi bi-telephone text-primary me-2"></i><a href="tel:+919815601722" style="color:#fff;">+91 98156 01722</a></p>
+                    </div>
+                </div>
+                <!--<div class="col-lg-4 col-md-6">
+                    <h3 class="text-white mb-4">Follow Us</h3>
+                    <div class="d-flex">
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-twitter fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="https://www.facebook.com/sarpalss/"><i class="fab fa-facebook-f fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded me-2" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
+                        <a class="btn btn-lg btn-primary btn-lg-square rounded" href="#"><i class="fab fa-instagram fw-normal"></i></a>
+                    </div>
+                </div>-->
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid text-light py-3" style="background: #051225;padding-bottom:45px !important;padding-top:45px !important;">
+        <div class="container">
+            <div class="row g-0">
+                <div class="col-md-6 text-center text-md-start">
+                    <p class="mb-md-0">&copy; 2025 <a class="text-white" href="contact.php">Dr. Sandeep Singh Clinic</a>. All Rights Reserved.</p>
+                </div>
+                <div class="col-md-6 text-center text-md-end">
+                   <p style="font-size: 14px; color: #666; text-align: center;">
+                      Designed and Maintained with ❤️ by 
+                      <a href="https://codioustechnologies.com" target="_blank" style="color: #007bff; text-decoration: none;">
+                        Codious Technologies
+                      </a>
+                    </p>
+             
+                    </p>
+                </div>
+            </div>
+        </div>
+</div>
+<script>
+  // Get current URL path
+  const currentPage = window.location.pathname.split("/").pop();
+
+  // Loop through all nav links
+  document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
+    // Get link href without domain
+    const linkPage = link.getAttribute('href');
+
+    // If it matches the current page, add the 'active' class
+    if (currentPage === linkPage || (currentPage === "" && linkPage === "index.html")) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+</script>
+
+<div class="footer-strip">
+  Please bring a hard copy of your report with you.
+</div>

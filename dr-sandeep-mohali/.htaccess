@@ -1,0 +1,16 @@
+RewriteEngine On
+
+# Redirect to HTTPS and www
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^drsandeepsinghclinic\.com$ [NC]
+RewriteRule ^(.*)$ https://www.drsandeepsinghclinic.com/$1 [L,R=301]
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set Cache-Control "no-cache, no-store, must-revalidate"
+  Header set Pragma "no-cache"
+  Header set Expires 0
+</IfModule>
