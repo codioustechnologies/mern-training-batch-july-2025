@@ -198,6 +198,14 @@ nav button.navbar-toggler {
     margin-bottom: 120px;
 }
 
+.img-fluid-2{
+    width:270px;
+    height:230px;  
+}
+.margin{
+    margin-bottom: 120px;
+}
+
 
 .section-title h5::before {
     position: absolute;
